@@ -3,10 +3,6 @@ require daslib/decs_boost
 require ecs_templates
 require camera
 
-[decs_template]
-struct Player
-    empty: bool
-
 [export]
 def create_player()
     create_entity <| @ ( eid, cmp )
@@ -19,19 +15,3 @@ def create_player()
         cmp |> apply_decs_template([[Camera]])
         cmp |> apply_decs_template([[Drawable]])
         cmp |> apply_decs_template([[Shootable cooldown = 0.0]])
-
-[decs(stage = update)]
-def user_move(var v: Vel; p: Player)
-    if (get_key(VK_A))
-        v.v.x = -300.0
-    elif(get_key(VK_D))
-        v.v.x = +300.0
-    else
-        v.v.x = 0.0
-
-    if (get_key(VK_W))
-        v.v.y = -300.0
-    elif get_key(VK_S)
-        v.v.y = +300.0
-    else
-        v.v.y = 0.0

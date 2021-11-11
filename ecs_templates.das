@@ -18,4 +18,15 @@ struct Drawable
 
 [decs_template]
 struct Shootable
-    cooldown: float //in secs
+    cooldown: float
+
+[decs_template]
+struct Player
+    empty: bool
+
+
+[decs_template]
+struct Shoot
+    life: float
+    from: float2
+    to: float2
