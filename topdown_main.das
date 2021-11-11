@@ -17,6 +17,7 @@ require life
 require dead
 require enemy
 require enemy_spawner
+require player_spawner
 
 // options debugger            // uncomment for debug in VS Code
 // require daslib/debug        // uncomment for debug in VS Code
@@ -28,8 +29,8 @@ def initialize()
     g_seed = random_seed(2349874);
     set_window_title("TopDown")
     prepare_background()
-    create_player()
     create_enemy_spawner()
+    create_player_spawner(float2(0.0, 0.0))
     commit()
 
 // this function is called to update game data,

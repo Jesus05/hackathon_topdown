@@ -49,10 +49,19 @@ struct Explosion
 struct Life
     l: float
 
+
+
 [decs_template]
 struct Spawner
-    pos: float2
     current: uint
     max: uint
     spawn_every: float
     last_spawn: float
+
+[decs_template]
+struct EnemySpawner : Spawner {}
+
+[decs_template]
+struct PlayerSpawner : Spawner
+    pos: float2
+    lives: uint

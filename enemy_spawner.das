@@ -9,22 +9,21 @@ def create_enemy_spawner()
     create_entity <| @ ( eid, cmp )
         cmp |> set("eid", eid)
         let pos = float2(0.0, 0.0)
-        cmp |> apply_decs_template([[Spawner pos = pos, current = 0u, max = 10u, spawn_every = 0.1, last_spawn = get_time_after_start()]])
-        cmp |> apply_decs_template([[Enemy]])
+        cmp |> apply_decs_template([[EnemySpawner current = 0u, max = 10u, spawn_every = 0.1, last_spawn = get_time_after_start()]])
 
 [decs(stage = update)]
-def enemy_spawner_counter(var s: Spawner; e: Enemy)
+def enemy_spawner_counter(var s: EnemySpawner)
     var count = 0u;
     query() <| $(e: Enemy; u: Unit)
         count++
     s.current = count
 
 [decs(stage = update)]
-def enemy_spawner(var s: Spawner; e: Enemy)
+def enemy_spawner(var s: EnemySpawner)
     if s.current >= s.max
         return
     let time = get_time_after_start() - s.last_spawn
-    if time >= s.spawn_every        
+    if time >= s.spawn_every
         var random = random_unit_vector(g_seed)
         while(random.x == 0.0 && random.y == 0.0)
             random = random_unit_vector(g_seed)

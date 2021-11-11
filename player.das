@@ -5,10 +5,9 @@ require ecs_templates
 let PLAYER_WEAPON_COOLDOWN = 0.2
 
 [export]
-def create_player()
+def create_player(pos: float2)
     create_entity <| @ ( eid, cmp )
         cmp |> set("eid", eid)
-        let pos = float2(0.0, 0.0)
         let vel = float2(0.0, 0.0)
         cmp |> apply_decs_template([[Pos p = pos]])
         cmp |> apply_decs_template([[Vel v = vel]])
