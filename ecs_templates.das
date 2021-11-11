@@ -26,7 +26,7 @@ struct Player
 
 
 [decs_template]
-struct Shoot
-    life: float
-    from: float2
-    to: float2
+struct Bullet
+    life: float //debug
+    from: float2 //debug
+    to: float2 //debug

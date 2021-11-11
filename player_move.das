@@ -4,16 +4,15 @@ require ecs_templates
 
 [decs(stage = update)]
 def user_move(var v: Vel; p: Player)
+    var dir = float2(0.0, 0.0)
     if (get_key(VK_A))
-        v.v.x = -300.0
+        dir.x = -1.0
     elif(get_key(VK_D))
-        v.v.x = +300.0
-    else
-        v.v.x = 0.0
+        dir.x = +1.0
 
     if (get_key(VK_W))
-        v.v.y = -300.0
+        dir.y = -1.0
     elif get_key(VK_S)
-        v.v.y = +300.0
-    else
-        v.v.y = 0.0
+        dir.y = +1.0
+    
+    v.v = normalize(dir) * 300.0

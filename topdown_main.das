@@ -9,6 +9,7 @@ require player_shoot
 require velocity
 require drawable
 require shootable_cooldown
+require bullet
 
 // options debugger            // uncomment for debug in VS Code
 // require daslib/debug        // uncomment for debug in VS Code
@@ -20,7 +21,6 @@ def initialize()
     set_window_title("TopDown")
     prepare_background()
     create_player()
-    return
 
 // this function is called to update game data,
 // dt - time elapsed since the previous update (in seconds)
@@ -29,7 +29,6 @@ def act(dt: float)
     if get_key(VK_ESCAPE)
         schedule_quit_game()
     decs_stage("update")
-    return
 
 // this function will be called every frame after 'act',
 // you can draw anything in this function
@@ -38,4 +37,4 @@ def draw
     enable_alpha_blend()
     decs_stage("draw_layer0")
     decs_stage("draw")
-    return
+//    decs_stage("draw_debug")
