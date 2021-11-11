@@ -2,6 +2,7 @@ require daslib/media
 require daslib/decs_boost
 require ecs_templates
 require globals
+require AI_simple
 
 require enemy
 

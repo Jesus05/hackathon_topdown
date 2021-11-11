@@ -39,7 +39,7 @@ struct Bullet
 
 [decs_template]
 struct Enemy
-    empty: bool
+    speed: float
 
 [decs_template]
 struct Explosion
@@ -49,8 +49,6 @@ struct Explosion
 [decs_template]
 struct Life
     l: float
-
-
 
 [decs_template]
 struct Spawner
@@ -66,3 +64,11 @@ struct EnemySpawner : Spawner {}
 struct PlayerSpawner : Spawner
     pos: float2
     lives: uint
+
+[decs_template]
+struct AI_simple
+    empty: bool
+
+[decs_template]
+struct AI_need
+    empty: bool
