@@ -48,3 +48,11 @@ struct Explosion
 [decs_template]
 struct Life
     l: float
+
+[decs_template]
+struct Spawner
+    pos: float2
+    current: uint
+    max: uint
+    spawn_every: float
+    last_spawn: float
