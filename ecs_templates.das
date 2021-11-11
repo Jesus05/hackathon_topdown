@@ -17,6 +17,7 @@ struct Unit
     color: uint
     size: float
     health: float
+    health_max: float
 
 [decs_template]
 struct Shootable

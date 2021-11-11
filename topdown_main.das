@@ -18,6 +18,7 @@ require dead
 require enemy
 require enemy_spawner
 require player_spawner
+require health_bar
 
 // options debugger            // uncomment for debug in VS Code
 // require daslib/debug        // uncomment for debug in VS Code
