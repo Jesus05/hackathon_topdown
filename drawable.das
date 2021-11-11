@@ -3,5 +3,5 @@ require daslib/decs_boost
 require ecs_templates
 
 [decs(stage = draw)]
-def draw_drawable(p: Pos; d: Drawable)
-    fill_circle(p.p.x, p.p.y, 20.0, make_color(1.0, 1.0, 1.0, 1.0))
+def draw_drawable(p: Pos; d: Unit)
+    fill_circle(p.p.x, p.p.y, d.size, d.color)

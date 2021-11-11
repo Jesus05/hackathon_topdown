@@ -1,8 +1,6 @@
 require daslib/media
 require daslib/decs_boost
 require ecs_templates
-require camera
-
 
 let PLAYER_WEAPON_COOLDOWN = 0.2
 
@@ -16,5 +14,5 @@ def create_player()
         cmp |> apply_decs_template([[Vel v = vel]])
         cmp |> apply_decs_template([[Player]])
         cmp |> apply_decs_template([[Camera]])
-        cmp |> apply_decs_template([[Drawable]])
+        cmp |> apply_decs_template([[Unit color = make_color(0.0, 1.0, 0.0, 1.0), size = 20.0]])
         cmp |> apply_decs_template([[Shootable cooldown = PLAYER_WEAPON_COOLDOWN, cd_time = 0.0]])

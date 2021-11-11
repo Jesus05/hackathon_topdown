@@ -3,6 +3,7 @@ require daslib/decs_boost
 require ecs_templates
 
 require background
+require camera
 require player
 require player_move
 require player_shoot
@@ -10,9 +11,21 @@ require velocity
 require drawable
 require shootable_cooldown
 require bullet
+require explosion
+require life
 
 // options debugger            // uncomment for debug in VS Code
 // require daslib/debug        // uncomment for debug in VS Code
+
+def create_enemy(pos: float2)
+    create_entity <| @ ( eid, cmp )
+        cmp |> set("eid", eid)
+        let vel = float2(0.0, 0.0)
+        cmp |> apply_decs_template([[Pos p = pos]])
+        cmp |> apply_decs_template([[Vel v = vel]])
+        cmp |> apply_decs_template([[Enemy]])
+        cmp |> apply_decs_template([[Unit color = make_color(1.0, 0.0, 0.0, 1.0), size = 15.0]])
+        cmp |> apply_decs_template([[Shootable cooldown = PLAYER_WEAPON_COOLDOWN, cd_time = 0.0]])
 
 // 'initialize' runs once when game starts and every hot-reload
 [export]
@@ -21,6 +34,8 @@ def initialize()
     set_window_title("TopDown")
     prepare_background()
     create_player()
+    create_enemy(float2(500.0, 200.0))
+    commit()
 
 // this function is called to update game data,
 // dt - time elapsed since the previous update (in seconds)

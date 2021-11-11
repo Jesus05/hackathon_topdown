@@ -13,8 +13,9 @@ struct Camera
     empty: bool
 
 [decs_template]
-struct Drawable
-    empty: bool
+struct Unit
+    color: uint
+    size: float
 
 [decs_template]
 struct Shootable
@@ -25,9 +26,22 @@ struct Shootable
 struct Player
     empty: bool
 
-
 [decs_template]
 struct Bullet
-    life: float
+    owner: EntityId
+    size: float
     from: float2 //debug
     to: float2 //debug
+
+[decs_template]
+struct Enemy
+    empty: bool
+
+[decs_template]
+struct Explosion
+    size: float
+    created_at: float
+
+[decs_template]
+struct Life
+    l: float
