@@ -18,9 +18,9 @@ def draw_background(b: Background; eid: EntityId)
     if !background.valid
         delete_entity(eid)
     else
-        let x = float(get_screen_width()/2 - background.width / 2)
-        let y = float(get_screen_height()/2 - background.height / 2)
-        background |> draw_image(x, y, 0xFFFFFF)
+        let x = float(/*get_screen_width()/2*/ - background.width / 2)
+        let y = float(/*get_screen_height()/2*/ - background.height / 2)
+        background |> draw_image(x, y, 0x919191)
 
 def prepare_spiral(var img: Image&)
     let some_const = 0.05
