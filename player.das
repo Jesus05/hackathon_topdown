@@ -3,6 +3,9 @@ require daslib/decs_boost
 require ecs_templates
 require camera
 
+
+let PLAYER_WEAPON_COOLDOWN = 0.2
+
 [export]
 def create_player()
     create_entity <| @ ( eid, cmp )
@@ -14,4 +17,4 @@ def create_player()
         cmp |> apply_decs_template([[Player]])
         cmp |> apply_decs_template([[Camera]])
         cmp |> apply_decs_template([[Drawable]])
-        cmp |> apply_decs_template([[Shootable cooldown = 0.0]])
+        cmp |> apply_decs_template([[Shootable cooldown = PLAYER_WEAPON_COOLDOWN, cd_time = 0.0]])

@@ -2,6 +2,8 @@ require daslib/media
 require daslib/decs_boost
 require ecs_templates
 
+let PLAYER_SPEED = 300.0
+
 [decs(stage = update)]
 def user_move(var v: Vel; p: Player)
     var dir = float2(0.0, 0.0)
@@ -15,4 +17,4 @@ def user_move(var v: Vel; p: Player)
     elif get_key(VK_S)
         dir.y = +1.0
     
-    v.v = normalize(dir) * 300.0
+    v.v = normalize(dir) * PLAYER_SPEED

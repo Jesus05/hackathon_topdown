@@ -4,4 +4,4 @@ require ecs_templates
 
 [decs(stage = update)]
 def shootable_cooldown(var s: Shootable)
-    s.cooldown -= get_delta_time()
+    s.cd_time -= get_delta_time()

@@ -20,7 +20,7 @@ def shoot_remover(var s: Bullet; eid: EntityId)
         delete_entity(eid)
     s.life -= get_delta_time()
 
-[decs(stage = draw_debug)]
+[decs(stage = draw_debug)] //debug
 def shoot_draw(s: Bullet; p: Pos)
     let nvel = normalize(s.to - s.from)
     let from = p.p

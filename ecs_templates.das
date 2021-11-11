@@ -19,6 +19,7 @@ struct Drawable
 [decs_template]
 struct Shootable
     cooldown: float
+    cd_time: float
 
 [decs_template]
 struct Player
@@ -27,6 +28,6 @@ struct Player
 
 [decs_template]
 struct Bullet
-    life: float //debug
+    life: float
     from: float2 //debug
     to: float2 //debug
