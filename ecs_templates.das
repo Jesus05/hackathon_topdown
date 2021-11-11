@@ -15,3 +15,7 @@ struct Camera
 [decs_template]
 struct Drawable
     empty: bool
+
+[decs_template]
+struct Shootable
+    cooldown: float //in secs

@@ -18,9 +18,10 @@ def create_player()
         cmp |> apply_decs_template([[Player]])
         cmp |> apply_decs_template([[Camera]])
         cmp |> apply_decs_template([[Drawable]])
+        cmp |> apply_decs_template([[Shootable cooldown = 0.0]])
 
 [decs(stage = update)]
-def user_control(var v: Vel; p: Player)
+def user_move(var v: Vel; p: Player)
     if (get_key(VK_A))
         v.v.x = -300.0
     elif(get_key(VK_D))

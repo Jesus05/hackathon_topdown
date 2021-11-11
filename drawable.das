@@ -4,4 +4,4 @@ require ecs_templates
 
 [decs(stage = draw)]
 def draw_drawable(p: Pos; d: Drawable)
-    fill_circle(p.p.x, p.p.y, 20.0, 0xFFFFFF)
+    fill_circle(p.p.x, p.p.y, 20.0, make_color(1.0, 1.0, 1.0, 1.0))
