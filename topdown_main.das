@@ -25,9 +25,6 @@ def act(dt: float)
     if get_key(VK_ESCAPE)
         schedule_quit_game()
     decs_stage("update")
-    decs_stage("update1")
-    decs_stage("update2")
-    decs_stage("update3")
     return
 
 // this function will be called every frame after 'act',
@@ -35,6 +32,4 @@ def act(dt: float)
 [export]
 def draw
     decs_stage("draw")
-    decs_stage("draw1")
-    decs_stage("draw2")
     return
