@@ -16,11 +16,13 @@ struct Camera
 struct Unit
     color: uint
     size: float
+    health: float
 
 [decs_template]
 struct Shootable
     cooldown: float
     cd_time: float
+    damage: float
 
 [decs_template]
 struct Player
@@ -30,6 +32,7 @@ struct Player
 struct Bullet
     owner: EntityId
     size: float
+    damage: float
     from: float2 //debug
     to: float2 //debug
 
