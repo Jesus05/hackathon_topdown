@@ -33,6 +33,7 @@ def initialize()
     prepare_background()
     create_enemy_spawner()
     create_player_spawner(float2(0.0, 0.0))
+//    create_enemy(float2(500.0, 200.0))
     commit()
 
 // this function is called to update game data,

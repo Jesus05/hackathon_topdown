@@ -10,9 +10,17 @@ def create_bullet(from: float2; to: float2; vel_plus: float2; var owner: EntityI
     create_entity <| @ ( eid, cmp )
         cmp |> set("eid", eid)
         let life = 2.0
-        let vel = normalize(to - from) * BULLET_SPEED + vel_plus
+        let dir_to_target = to - from
+//        var vel = normalize(dir_to_target) * BULLET_SPEED
+        let d = dot(normalize(dir_to_target), normalize(vel_plus))
+//        let k = length(dir_to_target) / length(vel)
+//        let target = to - vel_plus * k
+        let vel = normalize(dir_to_target) * BULLET_SPEED * (1.0 + d)
+        let target_place = from + vel * life
+//        let d = dot(normalize(target_place), normalize(to))
+//        debug("dot {d} tp {target_place} to {to}")
 //        let from = f + normalize(to - f) * 20.0
-        cmp |> apply_decs_template([[Bullet from = from, to = to, owner = owner, size = 3.0, damage = damage]])
+        cmp |> apply_decs_template([[Bullet from = from, to = target_place, owner = owner, size = 3.0, damage = damage]])
         cmp |> apply_decs_template([[Vel v = vel]])
         cmp |> apply_decs_template([[Pos p = from]])
         cmp |> apply_decs_template([[Life l = life]])

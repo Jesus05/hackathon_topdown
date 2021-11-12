@@ -66,7 +66,11 @@ struct PlayerSpawner : Spawner
     lives: uint
 
 [decs_template]
-struct AI_simple
+struct AI_simple_move
+    empty: bool
+
+[decs_template]
+struct AI_simple_shoot
     empty: bool
 
 [decs_template]
