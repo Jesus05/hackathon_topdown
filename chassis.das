@@ -22,12 +22,10 @@ def create_random_chassis()
     let rnd = random_float(g_seed)
     let len = chassis |> length()
     for i in range (len)
-//        debug("rnd {rnd} {float((i+1)) / float(len)}")
         if rnd <= float((i+1)) / float(len)
             let health = chassis[i].health[0] + random_float(g_seed) * (chassis[i].health[1] - chassis[i].health[0])
             let speed = chassis[i].speed[0] + random_float(g_seed) * (chassis[i].speed[1] - chassis[i].speed[0])
             create_chassis(health, speed)
-            debug("Created {chassis[i].name} {health} {speed}")
             break
 
 def create_chassis(h: float; s: float)
@@ -37,7 +35,6 @@ def create_chassis(h: float; s: float)
 
 [decs(stage = event)]
 def chassis_setter(a: Event_chassis_need; eid: EntityId; var u: Unit)
-    debug("unti_need_chasis {eid}")
     let unit_eid = eid
     let finded = find_query() <| $(var c: Chassis; eid: EntityId)
         if c.equiped
