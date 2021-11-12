@@ -23,6 +23,7 @@ require player_spawner
 require health_bar
 require AI_simple
 require chassis
+require body
 
 // options debugger            // uncomment for debug in VS Code
 // require daslib/debug        // uncomment for debug in VS Code
@@ -31,7 +32,7 @@ require chassis
 [export]
 def initialize()
     restart()
-    g_seed = random_seed(23498734);
+    g_seed = random_seed(234987341);
     set_window_title("TopDown")
     prepare_chassis()
     prepare_background()

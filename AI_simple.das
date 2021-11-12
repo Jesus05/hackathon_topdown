@@ -35,5 +35,5 @@ def AI_simple_shoot(p: Pos; v: Vel; a: AI_simple_shoot; var s: Shootable; var ei
     var to = float2(0.0, 0.0)
     query() <| $(p: Player; u: Unit; pl_pos: Pos)
         to = pl_pos.p
-    create_bullet(p.p, to, v.v,  eid, s.damage)
+    create_bullet(p.p, to, v.v,  eid, s.damage_mod)
     s.cd_time = s.cooldown

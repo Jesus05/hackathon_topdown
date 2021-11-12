@@ -20,13 +20,14 @@ struct Unit
     health_max: float
     speed: float
     chassis: EntityId
+    body: EntityId
     created_at: float
 
 [decs_template]
 struct Shootable
     cooldown: float
     cd_time: float
-    damage: float
+    damage_mod: float
 
 [decs_template]
 struct Player
@@ -88,3 +89,22 @@ struct Chassis
     health: float
     equiped: bool
     type_: ChassisType
+
+enum BodyType
+    shotgun
+    laser
+    rocket
+    sniper
+    assault
+
+[decs_template]
+struct Body
+    health: float
+    speed_mod: float
+    damage: float
+    cooldown: float
+    bullet_speed: float
+    bullet_spread: float
+    bullet_count: float
+    equiped: bool
+    type_: BodyType

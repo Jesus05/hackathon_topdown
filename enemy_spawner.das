@@ -44,13 +44,13 @@ def enemy_despawner(var s: EnemySpawner)
         return
     let time = get_time_after_start() - s.last_spawn
     if time >= s.spawn_every
-        let max_screen = length(float2(float(get_screen_width()/2), float(get_screen_height()/2))) * SPAWN_SCREEN_K
+        let max_screen = length(float2(float(get_screen_width()/2), float(get_screen_height()/2))) * SPAWN_SCREEN_K * 1.1
         let max_screen_sq = max_screen * max_screen
         var cam_pos = float2(0.0, 0.0)
         query() <| $(c: Camera; p: Pos)
             cam_pos = p.p
         find_query() <| $(e: Enemy; u: Unit; p: Pos; var eid: EntityId)
-            if (length_sq(cam_pos - p.p) < max_screen_sq)
+            if (length_sq(cam_pos - p.p) <= max_screen_sq)
                 return false
             delete_unit(u.chassis, eid)
             s.last_spawn = get_time_after_start() + random_float(g_seed) * s.spawn_every
