@@ -10,7 +10,8 @@ require player
 require player_move
 require player_shoot
 require velocity
-require drawable
+require unit_drawer
+require arrow_drawer
 require shootable_cooldown
 require bullet
 require explosion
