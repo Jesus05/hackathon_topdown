@@ -20,6 +20,7 @@ struct Unit
     health_max: float
     speed: float
     chassis: EntityId
+    created_at: float
 
 [decs_template]
 struct Shootable
