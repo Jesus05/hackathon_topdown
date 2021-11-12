@@ -75,8 +75,15 @@ struct AI_simple_move
 struct AI_simple_shoot
     empty: bool
 
+enum ChassisType
+    hover
+    wheel
+    track
+    pillar
+
 [decs_template]
 struct Chassis
     speed: float
     health: float
     equiped: bool
+    type_: ChassisType

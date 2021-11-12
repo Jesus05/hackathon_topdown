@@ -9,14 +9,15 @@ struct ChassisBounds
     health: float2
     speed: float2
     name: string
+    type_: ChassisType
 
 var chassis: array<ChassisBounds>
 
 def prepare_chassis()
-    chassis |> push([[ChassisBounds health = float2(5.0, 7.0),    speed = float2(300.0, 400.0), name = "hover"]])
-    chassis |> push([[ChassisBounds health = float2(10.0, 15.0),  speed = float2(200.0, 300.0), name = "wheel"]])
-    chassis |> push([[ChassisBounds health = float2(20.0, 40.0),  speed = float2(100.0, 150.0), name = "tracks"]])
-    chassis |> push([[ChassisBounds health = float2(80.0, 160.0), speed = float2(0.0, 0.0),     name = "pillar"]])
+    chassis |> push([[ChassisBounds health = float2(5.0, 7.0),    speed = float2(300.0, 400.0), name = "hover", type_ = ChassisType hover]])
+    chassis |> push([[ChassisBounds health = float2(10.0, 15.0),  speed = float2(200.0, 300.0), name = "wheel", type_ = ChassisType wheel]])
+    chassis |> push([[ChassisBounds health = float2(20.0, 40.0),  speed = float2(100.0, 150.0), name = "tracks", type_ = ChassisType track]])
+    chassis |> push([[ChassisBounds health = float2(80.0, 160.0), speed = float2(0.0, 0.0),     name = "pillar", type_ = ChassisType pillar]])
 
 def create_random_chassis()
     let rnd = random_float(g_seed)
@@ -25,13 +26,13 @@ def create_random_chassis()
         if rnd <= float((i+1)) / float(len)
             let health = chassis[i].health[0] + random_float(g_seed) * (chassis[i].health[1] - chassis[i].health[0])
             let speed = chassis[i].speed[0] + random_float(g_seed) * (chassis[i].speed[1] - chassis[i].speed[0])
-            create_chassis(health, speed)
+            create_chassis(health, speed, chassis[i].type_)
             break
 
-def create_chassis(h: float; s: float)
+def create_chassis(h: float; s: float; t: ChassisType)
     create_entity <| @ ( eid, cmp )
         cmp |> set("eid", eid)
-        cmp |> apply_decs_template([[Chassis speed = s, health = h, equiped = false]])
+        cmp |> apply_decs_template([[Chassis speed = s, health = h, equiped = false, type_ = t]])
 
 [decs(stage = event)]
 def chassis_setter(a: Event_chassis_need; eid: EntityId; var u: Unit)
