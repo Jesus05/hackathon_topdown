@@ -61,5 +61,6 @@ def body_setter(a: Event_body_need; eid: EntityId; var u: Unit; var s: Shootable
         u.health_max += b.health
         u.speed *= b.speed_mod
         return true
+    
     if !finded
         create_random_body()

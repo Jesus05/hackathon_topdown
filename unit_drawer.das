@@ -7,7 +7,7 @@ require body_drawer
 
 [decs(stage = draw)]
 def draw_unit(p: Pos; d: Unit; v: Vel; s: Shootable)
-    let have = query(d.chassis) <| $(c: Chassis)
+    var have = query(d.chassis) <| $(c: Chassis)
         if c.type_ == ChassisType pillar
             draw_pillar(p.p, d.size, d.color)
         elif c.type_ == ChassisType hover
@@ -21,7 +21,23 @@ def draw_unit(p: Pos; d: Unit; v: Vel; s: Shootable)
     if !have
         circle(p.p.x, p.p.y, d.size, d.color)
     
-    draw_shotgun(p.p, d.size, d.color, s.angle)
+    have = query(d.body) <| $(b: Body)
+        if b.type_ == BodyType shotgun
+            draw_shotgun(p.p, d.size, d.color, s.angle)
+        elif b.type_ == BodyType laser
+            draw_laser(p.p, d.size, d.color, s.angle)
+        elif b.type_ == BodyType rocket
+            draw_rocket(p.p, d.size, d.color, s.angle)
+        elif b.type_ == BodyType sniper
+            draw_sniper(p.p, d.size, d.color, s.angle)
+        elif b.type_ == BodyType assault
+            draw_assault(p.p, d.size, d.color, s.angle)
+        else
+            debug("Unknown body enum value {b.type_}")
+
+    if !have
+        let offset = float2(sin(-s.angle), cos(-s.angle)) * d.size
+        circle(p.p.x + offset.x, p.p.y + offset.y, d.size / 3.0, d.color)
     
 
 

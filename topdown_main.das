@@ -35,6 +35,7 @@ def initialize()
     g_seed = random_seed(234987341);
     set_window_title("TopDown")
     prepare_chassis()
+    prepare_bodys()
     prepare_background()
     create_enemy_spawner()
     create_player_spawner(float2(0.0, 0.0))
