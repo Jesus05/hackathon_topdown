@@ -18,6 +18,8 @@ struct Unit
     size: float
     health: float
     health_max: float
+    speed: float
+    chassis: EntityId
 
 [decs_template]
 struct Shootable
@@ -39,7 +41,7 @@ struct Bullet
 
 [decs_template]
 struct Enemy
-    speed: float
+    empty: bool
 
 [decs_template]
 struct Explosion
@@ -74,5 +76,7 @@ struct AI_simple_shoot
     empty: bool
 
 [decs_template]
-struct AI_need
-    empty: bool
+struct Chassis
+    speed: float
+    health: float
+    equiped: bool

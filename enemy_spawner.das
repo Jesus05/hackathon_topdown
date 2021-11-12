@@ -10,7 +10,7 @@ def create_enemy_spawner()
     create_entity <| @ ( eid, cmp )
         cmp |> set("eid", eid)
         let pos = float2(0.0, 0.0)
-        cmp |> apply_decs_template([[EnemySpawner current = 0u, max = 10u, spawn_every = 0.1, last_spawn = get_time_after_start()]])
+        cmp |> apply_decs_template([[EnemySpawner current = 0u, max = 1u, spawn_every = 0.1, last_spawn = get_time_after_start()]])
 
 [decs(stage = update)]
 def enemy_spawner_counter(var s: EnemySpawner)

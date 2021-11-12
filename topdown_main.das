@@ -2,6 +2,7 @@ require daslib/media
 require daslib/decs_boost
 require ecs_templates
 require globals
+require event
 
 require background
 require camera
@@ -20,6 +21,7 @@ require enemy_spawner
 require player_spawner
 require health_bar
 require AI_simple
+require chassis
 
 // options debugger            // uncomment for debug in VS Code
 // require daslib/debug        // uncomment for debug in VS Code
@@ -28,8 +30,9 @@ require AI_simple
 [export]
 def initialize()
     restart()
-    g_seed = random_seed(2349874);
+    g_seed = random_seed(23498734);
     set_window_title("TopDown")
+    prepare_chassis()
     prepare_background()
     create_enemy_spawner()
     create_player_spawner(float2(0.0, 0.0))
@@ -43,6 +46,7 @@ def act(dt: float)
     if get_key(VK_ESCAPE)
         schedule_quit_game()
     decs_stage("update")
+    decs_stage("event")
 
 // this function will be called every frame after 'act',
 // you can draw anything in this function
