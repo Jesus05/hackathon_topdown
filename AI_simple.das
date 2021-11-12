@@ -30,10 +30,12 @@ def AI_simple_move(p: Pos; var v: Vel; a: AI_simple_move; u: Unit)
 
 [decs(stage = update)]
 def AI_simple_shoot(p: Pos; v: Vel; a: AI_simple_shoot; var s: Shootable; var eid: EntityId)
-    if s.cd_time > 0.0
-        return
     var to = float2(0.0, 0.0)
     query() <| $(p: Player; u: Unit; pl_pos: Pos)
         to = pl_pos.p
+    let dir = to - p.p
+    s.angle = -atan2(dir.x, dir.y)
+    if s.cd_time > 0.0
+        return
     create_bullet(p.p, to, v.v,  eid, s.damage_mod)
     s.cd_time = s.cooldown

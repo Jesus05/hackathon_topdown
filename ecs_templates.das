@@ -28,6 +28,7 @@ struct Shootable
     cooldown: float
     cd_time: float
     damage_mod: float
+    angle: float
 
 [decs_template]
 struct Player

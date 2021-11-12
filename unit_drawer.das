@@ -6,7 +6,7 @@ require chassis_drawer
 require body_drawer
 
 [decs(stage = draw)]
-def draw_unit(p: Pos; d: Unit; v: Vel)
+def draw_unit(p: Pos; d: Unit; v: Vel; s: Shootable)
     let have = query(d.chassis) <| $(c: Chassis)
         if c.type_ == ChassisType pillar
             draw_pillar(p.p, d.size, d.color)
@@ -20,7 +20,8 @@ def draw_unit(p: Pos; d: Unit; v: Vel)
             debug("Unknown chassis enum value {c.type_}")
     if !have
         circle(p.p.x, p.p.y, d.size, d.color)
-    draw_shotgun(p.p, d.size, d.color, v.v)
+    
+    draw_shotgun(p.p, d.size, d.color, s.angle)
     
 
 
