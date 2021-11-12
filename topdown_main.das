@@ -24,6 +24,7 @@ require health_bar
 require AI_simple
 require chassis
 require body
+require shoot
 
 // options debugger            // uncomment for debug in VS Code
 // require daslib/debug        // uncomment for debug in VS Code
