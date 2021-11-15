@@ -33,7 +33,7 @@ require shoot
 [export]
 def initialize()
     restart()
-    g_seed = random_seed(234987341);
+    g_seed = random_seed(2349);
     set_window_title("TopDown")
     prepare_chassis()
     prepare_bodys()

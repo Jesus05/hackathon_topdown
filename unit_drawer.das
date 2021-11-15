@@ -39,6 +39,13 @@ def draw_unit(p: Pos; d: Unit; v: Vel; s: Shootable)
         let offset = float2(sin(-s.angle), cos(-s.angle)) * d.size
         circle(p.p.x + offset.x, p.p.y + offset.y, d.size / 3.0, d.color)
     
+[decs(stage = draw)]
+def draw_pillar_help(u: Unit; p: Player)
+    query(u.chassis) <| $(c: Chassis)
+        if (c.type_ == ChassisType pillar)
+            let pos = screen_to_world(float2(20, 20))
+            text_out(pos.x, pos.y, "Player chassis is pillar no move only shoot", make_color(1.0, 1.0, 1.0, 1.0))
+    
 
 
 
